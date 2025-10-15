@@ -1,0 +1,60 @@
+{
+  "welcomeFile": "/index.html",
+  "routes": [
+    {
+      "path": "/resources",
+      "target": {
+        "type": "service",
+        "name": "sapui5",
+        "entryPath": "/resources"
+      },
+      "description": "SAPUI5 Resources"
+    },
+    {
+      "path": "/test-resources",
+      "target": {
+        "type": "service",
+        "name": "sapui5",
+        "entryPath": "/test-resources"
+      },
+      "description": "SAPUI5 Resources"
+    },
+    {
+      "path": "/resources",
+      "target": {
+        "type": "service",
+        "name": "sapui5",
+        "entryPath": "/resources"
+      },
+      "description": "SAPUI5 Resources"
+    },
+    {
+      "path": "/test-resources",
+      "target": {
+        "type": "service",
+        "name": "sapui5",
+        "entryPath": "/test-resources"
+      },
+      "description": "SAPUI5 Test Resources"
+    },
+    {
+      "path": "/sap/opu/odata",
+      "target": {
+        "type": "destination",
+        "name": "GATEWAYDEV_NBAA",
+        "entryPath": "/sap/opu/odata"
+      },
+      "description": "DEVS4"
+    },
+    {
+      "path": "/sap/bc/ui5_ui5",
+      "target": {
+        "type": "destination",
+        "name": "GATEWAYDEV_NBAA",
+        "entryPath": "/sap/bc/ui5_ui5"
+      },
+      "description": "DEVS4"
+    }
+  ],
+  "sendWelcomeFileRedirect": true
+}

@@ -1,0 +1,1 @@
+sap.ui.define(["ZGBC_DELIVERY_TRUCK_APPROVE/ZGBC_DELIVERY_TRUCK_APPROVE/test/unit/controller/View1.controller"],function(){"use strict"});

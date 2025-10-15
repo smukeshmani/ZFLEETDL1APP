@@ -1,0 +1,166 @@
+<mvc:View controllerName="ZGBC_DELIVERY_TRUCK_APPROVE.ZGBC_DELIVERY_TRUCK_APPROVE.controller.View1" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m" 
+          xmlns:html="http://www.w3.org/1999/xhtml" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:u="sap.ui.unified"
+	      xmlns:l="sap.ui.layout">
+	<Shell id="shell">
+		<App id="idAppControl">
+	    	<pages>
+			<Page title="{i18n>title}" titleAlignment = "Center">
+				<content>
+						<VBox class="sapUiSmallMargin">
+						<f:SimpleForm id="IdEmpDetail"
+						              editable="true" 
+						              layout="ResponsiveGridLayout"
+						              title="Employee Details"
+						              labelSpanXL="4"
+									  labelSpanL="4"
+									  labelSpanM="12"
+									  labelSpanS="12"
+								      adjustLabelSpan="false"
+								      emptySpanXL="0"
+									  emptySpanL="0"
+									  emptySpanM="0"
+									  emptySpanS="0"
+							          columnsXL="2"
+								      columnsL="2"
+									  columnsM="1"
+									  backgroundDesign = "Solid"
+									  singleContainerFullSize="false">
+							<f:content>
+								    <core:Title text="" />
+								    <Label text="Request ID" design="Bold"/>
+								    <Text id="idRequestId" text="{/RequestId}"  ></Text>
+									<Label text="Employee Number" required="true"/>
+									<Text id="idPernr" text="{/Pernr}" ></Text>
+									<Label text="Employee Name"/>
+									<Text id="idNameEn" text="{/NameEn}" ></Text>
+									<Label text="Employee Name(Arabic)"/>
+									<Text id="idNameAr" text="{/NameAr}" ></Text>
+									<Label text="Position Code"/>
+									<Text text="{/PositionId}" id="idPositionCode"></Text>
+									<Label text="Position"/>
+									<Text text="{/PositionTextEn}" id="idPositionEn"></Text>
+									<Label text="Position(Arabic)"/>
+									<Text text="{/PositionTextAr}" id="idPositionAr"></Text>
+								    <Label text="Department"/>
+									<Text text="{/DepartmentEn}" id="idDepartmentEn"></Text>
+									<Label text="Department(Arabic)"/>
+									<Text text="{/DepartmentAr}" id="idDepartmentAr"></Text>
+									<Label text="Channel"/>
+									<Text text="{/Channel}" id="idChannel"></Text>
+								  
+								    <core:Title text="" />
+								    <Label text=""/>
+								    <Text text="" id="Blank"></Text>
+									<Label text="CompanyCode"/>
+									<Text text="{/Cocd}" id="idCocd"></Text>
+									<Label text="Company name"/>
+									<Text text="{/CocdDesc}" id="idCompanyName"></Text>
+									<Label text="Delivering Plant (Own or External)"/>
+									<Text text="{/Plant}" id="idEmpPlant"></Text>
+									<Label text="Employee Grade/Group ID" />
+									<Text id="idEmpSubGroup" text ="{/EmpSubgroup}"></Text>
+								    <Label text="Employee Grade/Group Desc." />
+									<Text id="idEmpSubGroupDesc" text="{/EmpSubgroupDesc}"></Text>
+									<Label text="Iquama No"/>
+									<Text id="idIquama" text="{/IdNoEn}" ></Text>
+									<Label text="Employee Cost Center"/>
+									<Text id="idEmpCostCenter" text= "{/CostCenter}"/>
+                                    <Label text="Driving license No"/>
+									<Text id="idDl" text="{/Dl}" ></Text>
+							</f:content>
+					   	  </f:SimpleForm>
+				   	    </VBox>
+				   	    
+				   	      <!--Assign Vehicle for Employee-->
+						<VBox class="sapUiSmallMargin">
+						<f:SimpleForm id="IdVehicleSelect"
+						              editable="true" 
+						              layout="ResponsiveGridLayout"
+						              title="Delivery Truck Selection"
+						              labelSpanXL="4"
+									  labelSpanL="4"
+									  labelSpanM="12"
+									  labelSpanS="12"
+								      adjustLabelSpan="false"
+								      emptySpanXL="0"
+									  emptySpanL="0"
+									  emptySpanM="0"
+									  emptySpanS="0"
+							          columnsXL="1"
+								      columnsL="1"
+									  columnsM="1"
+									  singleContainerFullSize="false"
+									  backgroundDesign = "Solid"
+									  visible="{localModel2>/VehicleSelectVis}">
+							 <f:content>
+				        	    <Label text="Select Delivery Truck" required="true" visible="{localModel2>/VehicleDDVisible}"/>
+								<Select id = "IdSelectedVehicle" width="200%" autoAdjustWidth = "true" visible="{localModel2>/VehicleDDVisible}" items="{localModel2>/Vehicles/}" 
+								selectedKey = "{localModel2>/VehicleSelected}" change = "onSelectVehicle">
+				    			<core:Item text="{localModel2>VehicleName}"  key="{localModel2>VehicleId}"/>			
+								</Select>
+								 <MessageStrip visible="{localModel2>/MsgVisible}"
+									text="{localModel2>/MsgText}"
+									type="{localModel2>/MsgType}"
+									showIcon="true"
+									showCloseButton="true"
+									class="sapUiMediumMarginBottom">
+					             </MessageStrip>
+							 </f:content>
+							 </f:SimpleForm>
+						 </VBox>
+					
+						<VBox class="sapUiSmallMargin">
+						<f:SimpleForm id="IdVehicleDetails"
+						              editable="false" 
+						              layout="ResponsiveGridLayout"
+						              title="Vehicle Assigned For The Truck Request"
+						              labelSpanXL="4"
+									  labelSpanL="4"
+									  labelSpanM="12"
+									  labelSpanS="12"
+								      adjustLabelSpan="false"
+								      emptySpanXL="0"
+									  emptySpanL="0"
+									  emptySpanM="0"
+									  emptySpanS="0"
+							          columnsXL="2"
+								      columnsL="2"
+									  columnsM="1"
+									  singleContainerFullSize="false"
+									  visible = "{localModel3>/VehicleDetVisible}">
+							 <f:content>
+							 	<core:Title text="" />
+						    	<Label text="Delivery Truck ID" required="true"/>
+				        	    <Text id="idVehicleId" text="{localVhModel>/Vehicleid}" ></Text>
+				        	    <Label text="Delivery Truck Name"/>
+				        	    <Text id="idVehicleName" text="{localVhModel>/VehicleName}" ></Text>
+				        	    <Label text="Vehicle Owner/Vendor"/>
+				        	    <Text id="idVehicleVendor" text="{localVhModel>/VehicleVendor}" ></Text>
+				        	    <Label text="Truck/Plate Number"/>
+				        	    <Text id="idVehicleNumber" text="{localVhModel>/VehicleNumber}" ></Text>
+				        	    <core:Title text="" />
+				        	    <Label text="Plant" required="true"/>
+				        	    <Text id="idPlant" text="{localVhModel>/Plant}" ></Text>
+				        	    <Label text="Location"/>
+				        	    <Text id="idLocation" text="{localVhModel>/Location}" ></Text>
+				        	    <Label text="Cost Center"/>
+				        	    <Text id="idCostCenter" text="{localVhModel>/CostCenter}" ></Text>
+							 </f:content>
+							 </f:SimpleForm>
+							</VBox>
+							
+				</content>
+				
+				<footer>
+					 <OverflowToolbar id="otbFooter">
+				     <ToolbarSpacer/>
+				     <Button type="Emphasized" text="Save" press="onSubmitRequest" width="200px" id = "Idsubmit" visible="{localModel3>/SumitRequestVisible}" >
+			   		 <layoutData><OverflowToolbarLayoutData priority="NeverOverflow" /></layoutData>
+		    		 </Button>
+			         </OverflowToolbar>
+	           	</footer>
+			</Page>
+		</pages>
+		</App>
+	</Shell>
+</mvc:View>
