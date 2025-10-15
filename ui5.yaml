@@ -1,0 +1,31 @@
+specVersion: "3.1"
+metadata:
+  name: zgbc_delivery_truck_approve.zgbc_delivery_truck_approve
+type: application
+server:
+  customMiddleware:
+    - name: fiori-tools-proxy
+      afterMiddleware: compression
+      configuration:
+        ignoreCertError: false
+        backend:
+          - path: /sap
+            url: https://dev.berain.com.sa:44310/
+            client: "100"
+            destination: DEV_BRN_HEC
+        ui5:
+          path:
+            - /resources
+            - /test-resources
+          url: https://ui5.sap.com
+    - name: fiori-tools-appreload
+      afterMiddleware: compression
+      configuration:
+        port: 35729
+        path: webapp
+        delay: 300
+    - name: fiori-tools-preview
+      afterMiddleware: fiori-tools-appreload
+      configuration:
+        component: ZGBC_DELIVERY_TRUCK_APPROVE.ZGBC_DELIVERY_TRUCK_APPROVE
+        ui5Theme: sap_fiori_3
